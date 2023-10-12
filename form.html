@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:aqua ;
+        }
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Customer Survey Form</h2>
+        <form id="surveyForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="USA">USA</option>
+                <option value="India">India</option>
+                <option value="China">China</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Austlia">Austlia</option>
+                <option value="Canada">Canada</option>
+                <!-- Add more countries here -->
+            </select>
+
+            <label>Gender:</label>
+            <input type="checkbox" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="checkbox" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+            <input type="checkbox" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="number" id="mobile" required>
+
+            <br></br>
+            <button type="button" id="submitBtn">Submit</button>
+            <button type="reset" id="resetBtn">Reset</button>
+        </form>
+    </div>
+
+   
+    <div id="popup">
+        <h2>Survey Form Submission</h2>
+        <div id="popupContent"></div>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            // Validation
+            let form = document.getElementById("surveyForm");
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Get form values
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let dob = document.getElementById("dob").value;
+            let country = document.getElementById("country").value;
+            let gender = Array.from(document.querySelectorAll('input[name="gender"]:checked')).map(e => e.value).join(", ");
+            let profession = document.getElementById("profession").value;
+            let email = document.getElementById("email").value;
+            let mobile = document.getElementById("mobile").value;
+
+            // Display values in the popup
+            let popupContent = document.getElementById("popupContent");
+            popupContent.innerHTML = `
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Country:</strong> ${country}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Profession:</strong> ${profession}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Mobile Number:</strong> ${mobile}</p>
+            `;
+
+            // Show the popup
+            let popup = document.getElementById("popup");
+            popup.style.display = "block";
+        });
+
+        document.getElementById("closePopup").addEventListener("click", function() {
+            // Close the popup and reset the form
+            let popup = document.getElementById("popup");
+            popup.style.display = "none";
+            document.getElementById("surveyForm").reset();
+        });
+    </script>
+</body>
+</html>

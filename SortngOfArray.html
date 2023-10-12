@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+          
+        let myArray = [];
+        let arrayLength = parseInt(prompt("Enter the length of the array:"));
+
+       
+        for (let i = 0; i < arrayLength; i++) 
+        {
+        let userInput = prompt(`Enter element ${i + 1}:`);
+        myArray.push(userInput);
+        }
+        myArray=myArray.sort();
+        console.log(myArray);
+        
+        document.write(" given array is sorted in descending order = ")
+        for(let i=myArray.length-1;i>=0;i--)
+        {
+            
+         document.write(myArray[i]+" ");
+        }
+      
+    
+            
+
+
+             
+        </script>
+</body>
+</html>

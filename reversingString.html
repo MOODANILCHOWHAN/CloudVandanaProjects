@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <script>
+         function reverseWordsCharacters(sentence) {
+            const words = sentence.split(' ');
+
+            for (let i = 0; i < words.length; i++) {
+                words[i] = words[i].split('').reverse().join('');
+            }
+
+            return words.join(' ');
+        }
+
+            
+            const inputSentence = prompt("please enter your string");
+            const reversedSentence = reverseWordsCharacters(inputSentence);
+            console.log("Original sentence = " + inputSentence);
+            console.log("Reversed sentence = " + reversedSentence);
+
+        </script>
+</body>
+</html>

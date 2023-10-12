@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        #container
+        {
+            width: 500px;
+            height: 500px;
+            display: grid;
+            grid-template-columns: 125px 125px 125px 125px;
+            grid-gap:0px;
+            
+            
+        }
+        input
+        {
+           grid-column-start:1;
+            grid-column-end:4;
+         
+
+        }
+       
+        .keys
+        {
+            background-color: black;
+            color: white;
+        }
+       .symbolKey
+       {
+        background-color: rgb(116, 118, 118);
+        color: white;
+       }
+       #ac
+       {
+        background-color: rgb(3, 83, 56);
+        color: white;
+       }
+    </style>
+</head>
+<body>
+    
+    <center>
+        <div id="container">
+
+            <input id="inputBox">
+            <button id="ac" onclick=" AC()">AC</button>
+           
+            <button class="keys" onclick="one()">1</button>
+            <button class="keys"  onclick="two()">2</button>
+            <button class="keys"  onclick="three()">3</button>
+            <button  class="symbolKey" onclick="add()" >+</button>
+            <button  class="keys" onclick="four()">4</button>
+            <button class="keys" onclick="five()">5</button>
+            <button class="keys" onclick="six()">6</button>
+            <button  class="symbolKey" onclick="minus()" >-</button>
+            <button class="keys"  onclick="seven()">7</button>
+            <button class="keys" onclick="eight()">8</button>
+            <button class="keys"  onclick="nine()">9</button>
+            <button  class="symbolKey" onclick="divide()" >/</button>
+            <button class="keys"  onclick="dot()" >.</button>
+            <button class="keys"  onclick="zero()">0</button>
+            <button class="keys"  onclick="equal()" >=</button>
+            <button class="symbolKey"  onclick="into()" >*</button>
+        </div>
+    </center>
+        <script>
+            var input=document.getElementById('inputBox');
+           let button=document.getElementsByClassName('keys');
+            function one()
+            {
+                input.value=input.value+"1";
+            }
+            function two()
+            {
+                input.value=input.value+"2";
+            }
+            function three()
+            {
+                input.value=input.value+"3";
+            }
+            function four()
+            {
+                input.value=input.value+"4";
+            }
+            function five()
+            {
+                input.value=input.value+"5";
+            }
+            function six()
+            {
+                input.value=input.value+"6";
+            }
+            function seven()
+            {
+                input.value=input.value+"7";
+            }
+            function eight()
+            {
+                input.value=input.value+"8";
+            }
+            function nine()
+            {
+                input.value=input.value+"9";
+            }
+            function zero()
+            {
+                input.value=input.value+"0";
+            }
+            function add()
+            {
+                input.value=input.value+"+";
+            }
+            function minus()
+            {
+                input.value=input.value+"-";
+            }
+            function divide()
+            {
+                input.value=input.value+"/";
+            }
+            function into()
+            {
+                input.value=input.value+"*";
+            }
+            function dot()
+            {
+                input.value=input.value+".";
+            }
+            function AC()
+            {
+                input.value="";
+            }
+            
+            let result;
+            function equal()
+            {
+               
+                let inputValue=input.value;
+               function calculate(inputValue) {
+                    return eval(inputValue);
+                    }
+                    const result = calculate(inputValue);
+                    console.log(`Result: ${result}`);
+
+                input.value=result;
+            }
+            
+        </script>
+</body>
+</html>
